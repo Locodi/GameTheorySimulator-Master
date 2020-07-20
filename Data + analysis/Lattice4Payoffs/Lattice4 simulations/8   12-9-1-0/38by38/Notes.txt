@@ -1,0 +1,11 @@
+1 - quick to fully stable
+2 - very long to almost fully stable
+3 - quick to almost fully stable
+4 - medium to almost fully stable
+5 - quick to fully stable
+6 - quick to almost fully stable and empty
+7 - quick to almost fully stable
+8 - very long to no stable? possible long loop
+9 - very long to no stable? possible long loop
+10 - quick to pulsating stable
+

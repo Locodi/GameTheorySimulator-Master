@@ -1,0 +1,59 @@
+
+Main.java
+	
+	- Move it to another project/package
+	
+MainMenu.java
+	
+MainMenuControler.java	 
+	- Implement other (add generate and test all 6 node graphs)
+	
+NewGraphControler.java
+		
+OpenGraphControler.java
+	- Refresh table after deleting a graph + keep the sort order + auto select the nearest row
+
+Vertex.java
+	- Update to contain other info if necessary 
+
+Edge.java
+	- Update if necessary
+	
+EditorControler.java	
+	- Error on txt_NodeSelection_XValue when swapping between text fields lines dissapear/move	
+	- Make it so you distinguish between right and left click (execute command with left and clear command with right)
+	- Add initialization (handle file errors)
+ 	- Save graph on exit (handle errors)
+ 	- Add node functionality (update: make it so you can have shift pressed so you can place multiple nodes) 	
+	- Delete functionality (update: hold shift for multiple deletes)
+	- Select functionality (update: add more info (node degree, max scores(defection + cooperation)) + select edge)	
+	- Simulate functionality (update: check for connected graph)	
+	- Add the option to resize the main editor screen on graph details		
+	- Before going to simulator check if graph is connected	
+	- Add a visual list of all objects
+	- Add a history list (used to undo/redo actions)	
+	- Add select and move + rotate
+	- Add select and delete
+	- Add zoom in and out functionality	
+
+SimulatorControler.java	
+	- Make scroll pane pannable (first property)?
+
+AdvanceSimulator_MainMenuControler.java
+
+AdvanceSimulator_FullSimulationControler.java
+	- Tell the user when the simulation starts and ends (label)
+	- Show a graph of the results
+	- Save results in same .csv file as the graph (put it at the end)
+	- Check results: steps might be wrong( should end at n = number of nodes)
+	- Update fxml file name.
+	
+OtherFeatures_OnePermutationSimulationControler.java
+	- Add the code for the simulations.
+	- Allow the user to change the payoffs. 
+	
+Other:			
+	- Make a proper database
+	
+
+	

@@ -25,8 +25,13 @@
             <Button layoutX="200.0" layoutY="40.0" mnemonicParsing="false" onAction="#goOnePermutationSimulation" prefHeight="25.0" prefWidth="100.0" text="One Permutation">
                <font>
                   <Font size="11.0" />
-               </font></Button>           
-            <Button layoutX="200.0" layoutY="80.0" mnemonicParsing="false" onAction="#goPayoffsTest" prefHeight="25.0" prefWidth="100.0" text="Payoffs Test">
+               </font></Button>
+            <Button layoutX="200.0" layoutY="80.0" mnemonicParsing="false" onAction="#goLattice4Payoffs" prefHeight="25.0" prefWidth="100.0" text="Lattice 4 Payoffs">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+            <Button layoutX="200.0" layoutY="120.0" mnemonicParsing="false" onAction="#goPayoffsTest" prefHeight="25.0" prefWidth="100.0" text="Payoffs Test">
                <font>
                   <Font size="11.0" />
                </font>

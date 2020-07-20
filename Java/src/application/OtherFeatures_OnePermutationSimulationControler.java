@@ -18,11 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/*
- * Goes over all connected graphs of 6 nodes and looks at every possible permutation of 
- * one initial defector and stores the averege result of several runs
- */
-
 public class OtherFeatures_OnePermutationSimulationControler {
 
 	
@@ -546,7 +541,17 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			else
 				repeat_counter = 0;
 			
-			
+			// print out current graph
+			/*
+			System.out.print("\nCurrent graph " + tick_counter + "\n");
+			for(int i = 0; i<numberOfNodes; i++)
+			{			
+				if(vertices[i].getCurrentDefect() == true)
+					System.out.print(" 1 ");	
+				else
+					System.out.print(" 0 ");
+			}
+			*/
 			if(repeat_counter == END_RUN_REPEAT)
 			{	
 				return 1;// no change in graph in the last END_RUN_REPEAT turns
@@ -557,7 +562,6 @@ public class OtherFeatures_OnePermutationSimulationControler {
 		return 0;// reached the maximum amount of turns
 	}
 	
-	// returns 1 if the graph is connected and 0 otherwise
 	public static int isConnected(int edges[][], int numberOfNodes, Vertex vertices[], int[] seen, Queue<Vertex> verticesQueue)
 	{
 		int counter = 1;
@@ -603,7 +607,10 @@ public class OtherFeatures_OnePermutationSimulationControler {
 		
 		// set window size to previous scene
 		app_Stage.setHeight(stage_height);
-		app_Stage.setWidth(stage_width);		
+		app_Stage.setWidth(stage_width);
+		
+		
 	}
+
 	
 }

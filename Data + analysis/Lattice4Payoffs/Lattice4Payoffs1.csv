@@ -1,0 +1,124 @@
+Payoff Type,T,R,P,S,,0 to 30 by 0.1,,,"IF(I2=0,1)","IF(AND(I2=0,B2=0),1)"
+4T < 4R < 3T+P < 3R+S < 2T+2P < 2R+2S < T+3P < R+3S < 4P < 4S,0.6,0.5,0.1,0,,,0,0,1,FALSE
+Results 3x5000,,,,,,,1,1,FALSE,FALSE
+Results 122x123,,,,,,,2,2,FALSE,FALSE
+4T < 4R < 3T+P < 3R+S < 2T+2P < 2R+2S < T+3P < 4P < R+3S < 4S,1.2,1.1,0.3,0,,,3,0,1,FALSE
+Results 3x5000,,,,,,,4,1,FALSE,FALSE
+Results 122x123,,,,,,,5,2,FALSE,FALSE
+4T < 4R < 3T+P < 3R+S < 2T+2P < T+3P < 2R+2S < R+3S < 4P < 4S,0,0,0,0,,,6,0,1,1
+Results 3x5000,,,,,,,7,1,FALSE,FALSE
+Results 122x123,,,,,,,8,2,FALSE,FALSE
+4T < 4R < 3T+P < 3R+S < 2T+2P < T+3P < 2R+2S < 4P < R+3S < 4S,1,0.9,0.3,0,,,9,0,1,FALSE
+Results 3x5000,,,,,,,10,1,FALSE,FALSE
+Results 122x123,,,,,,,11,2,FALSE,FALSE
+4T < 4R < 3T+P < 3R+S < 2T+2P < T+3P < 4P < 2R+2S < R+3S < 4S,0,0,0,0,,,12,0,1,1
+Results 3x5000,,,,,,,13,1,FALSE,FALSE
+Results 122x123,,,,,,,14,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < 3R+S < 2R+2S < T+3P < R+3S < 4P < 4S,0,0,0,0,,,15,0,1,1
+Results 3x5000,,,,,,,16,1,FALSE,FALSE
+Results 122x123,,,,,,,17,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < 3R+S < 2R+2S < T+3P < 4P < R+3S < 4S,0,0,0,0,,,18,0,1,1
+Results 3x5000,,,,,,,19,1,FALSE,FALSE
+Results 122x123,,,,,,,20,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < 3R+S < T+3P < 2R+2S < R+3S < 4P < 4S,0,0,0,0,,,21,0,1,1
+Results 3x5000,,,,,,,22,1,FALSE,FALSE
+Results 122x123,,,,,,,23,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < 3R+S < T+3P < 2R+2S < 4P < R+3S < 4S,0.8,0.7,0.3,0,,,24,0,1,FALSE
+Results 3x5000,,,,,,,25,1,FALSE,FALSE
+Results 122x123,,,,,,,26,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < 3R+S < T+3P < 4P < 2R+2S < R+3S < 4S,1,0.9,0.5,0,,,27,0,1,FALSE
+Results 3x5000,,,,,,,28,1,FALSE,FALSE
+Results 122x123,,,,,,,29,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < T+3P < 3R+S < 2R+2S < R+3S < 4P < 4S,0,0,0,0,,,30,0,1,1
+Results 3x5000,,,,,,,31,1,FALSE,FALSE
+Results 122x123,,,,,,,32,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < T+3P < 3R+S < 2R+2S < 4P < R+3S < 4S,0,0,0,0,,,33,0,1,1
+Results 3x5000,,,,,,,34,1,FALSE,FALSE
+Results 122x123,,,,,,,35,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < T+3P < 3R+S < 4P < 2R+2S < R+3S < 4S,1.3,1.2,0.8,0,,,36,0,1,FALSE
+Results 3x5000,,,,,,,37,1,FALSE,FALSE
+Results 122x123,,,,,,,38,2,FALSE,FALSE
+4T < 4R < 3T+P < 2T+2P < T+3P < 4P < 3R+S < 2R+2S < R+3S < 4S,1.8,1.7,1.3,0,,,39,0,1,FALSE
+Results 3x5000,,,,,,,40,1,FALSE,FALSE
+Results 122x123,,,,,,,41,2,FALSE,FALSE
+4T < 3T+P < 4R < 3R+S < 2T+2P < 2R+2S < T+3P < R+3S < 4P < 4S,1.2,0.9,0.1,0,,,42,0,1,FALSE
+Results 3x5000,,,,,,,43,1,FALSE,FALSE
+Results 122x123,,,,,,,44,2,FALSE,FALSE
+4T < 3T+P < 4R < 3R+S < 2T+2P < 2R+2S < T+3P < 4P < R+3S < 4S,0,0,0,0,,,45,0,1,1
+Results 3x5000,,,,,,,46,1,FALSE,FALSE
+Results 122x123,,,,,,,47,2,FALSE,FALSE
+4T < 3T+P < 4R < 3R+S < 2T+2P < T+3P < 2R+2S < R+3S < 4P < 4S,0,0,0,0,,,48,0,1,1
+Results 3x5000,,,,,,,49,1,FALSE,FALSE
+Results 122x123,,,,,,,50,2,FALSE,FALSE
+4T < 3T+P < 4R < 3R+S < 2T+2P < T+3P < 2R+2S < 4P < R+3S < 4S,0,0,0,0,,,51,0,1,1
+Results 3x5000,,,,,,,52,1,FALSE,FALSE
+Results 122x123,,,,,,,53,2,FALSE,FALSE
+4T < 3T+P < 4R < 3R+S < 2T+2P < T+3P < 4P < 2R+2S < R+3S < 4S,0,0,0,0,,,54,0,1,1
+Results 3x5000,,,,,,,55,1,FALSE,FALSE
+Results 122x123,,,,,,,56,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < 3R+S < 2R+2S < T+3P < R+3S < 4P < 4S,1,0.7,0.1,0,,,57,0,1,FALSE
+Results 3x5000,,,,,,,58,1,FALSE,FALSE
+Results 122x123,,,,,,,59,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < 3R+S < 2R+2S < T+3P < 4P < R+3S < 4S,0,0,0,0,,,60,0,1,1
+Results 3x5000,,,,,,,61,1,FALSE,FALSE
+Results 122x123,,,,,,,62,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < 3R+S < T+3P < 2R+2S < R+3S < 4P < 4S,0.8,0.5,0.1,0,,,63,0,1,FALSE
+Results 3x5000,,,,,,,64,1,FALSE,FALSE
+Results 122x123,,,,,,,65,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < 3R+S < T+3P < 2R+2S < 4P < R+3S < 4S,0.4,0.3,0.1,0,,,66,0,1,FALSE
+Results 3x5000,,,,,,,67,1,FALSE,FALSE
+Results 122x123,,,,,,,68,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < 3R+S < T+3P < 4P < 2R+2S < R+3S < 4S,1.1,0.9,0.5,0,,,69,0,1,FALSE
+Results 3x5000,,,,,,,70,1,FALSE,FALSE
+Results 122x123,,,,,,,71,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < T+3P < 3R+S < 2R+2S < R+3S < 4P < 4S,0,0,0,0,,,72,0,1,1
+Results 3x5000,,,,,,,73,1,FALSE,FALSE
+Results 122x123,,,,,,,74,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < T+3P < 3R+S < 2R+2S < 4P < R+3S < 4S,0,0,0,0,,,75,0,1,1
+Results 3x5000,,,,,,,76,1,FALSE,FALSE
+Results 122x123,,,,,,,77,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < T+3P < 3R+S < 4P < 2R+2S < R+3S < 4S,0.7,0.6,0.4,0,,,78,0,1,FALSE
+Results 3x5000,,,,,,,79,1,FALSE,FALSE
+Results 122x123,,,,,,,80,2,FALSE,FALSE
+4T < 3T+P < 4R < 2T+2P < T+3P < 4P < 3R+S < 2R+2S < R+3S < 4S,1,0.9,0.7,0,,,81,0,1,FALSE
+Results 3x5000,,,,,,,82,1,FALSE,FALSE
+Results 122x123,,,,,,,83,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < 3R+S < 2R+2S < T+3P < R+3S < 4P < 4S,0,0,0,0,,,84,0,1,1
+Results 3x5000,,,,,,,85,1,FALSE,FALSE
+Results 122x123,,,,,,,86,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < 3R+S < 2R+2S < T+3P < 4P < R+3S < 4S,0,0,0,0,,,87,0,1,1
+Results 3x5000,,,,,,,88,1,FALSE,FALSE
+Results 122x123,,,,,,,89,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < 3R+S < T+3P < 2R+2S < R+3S < 4P < 4S,1,0.5,0.1,0,,,90,0,1,FALSE
+Results 3x5000,,,,,,,91,1,FALSE,FALSE
+Results 122x123,,,,,,,92,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < 3R+S < T+3P < 2R+2S < 4P < R+3S < 4S,1.1,0.6,0.2,0,,,93,0,1,FALSE
+Results 3x5000,,,,,,,94,1,FALSE,FALSE
+Results 122x123,,,,,,,95,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < 3R+S < T+3P < 4P < 2R+2S < R+3S < 4S,0,0,0,0,,,96,0,1,1
+Results 3x5000,,,,,,,97,1,FALSE,FALSE
+Results 122x123,,,,,,,98,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < T+3P < 3R+S < 2R+2S < R+3S < 4P < 4S,1.3,0.5,0.1,0,,,99,0,1,FALSE
+Results 3x5000,,,,,,,100,1,FALSE,FALSE
+Results 122x123,,,,,,,101,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < T+3P < 3R+S < 2R+2S < 4P < R+3S < 4S,0.7,0.3,0.1,0,,,102,0,1,FALSE
+Results 3x5000,,,,,,,103,1,FALSE,FALSE
+Results 122x123,,,,,,,104,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < T+3P < 3R+S < 4P < 2R+2S < R+3S < 4S,0.5,0.3,0.2,0,,,105,0,1,FALSE
+Results 3x5000,,,,,,,106,1,FALSE,FALSE
+Results 122x123,,,,,,,107,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < 4R < T+3P < 4P < 3R+S < 2R+2S < R+3S < 4S,0.7,0.5,0.4,0,,,108,0,1,FALSE
+Results 3x5000,,,,,,,109,1,FALSE,FALSE
+Results 122x123,,,,,,,110,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < T+3P < 4R < 3R+S < 2R+2S < R+3S < 4P < 4S,1.8,0.5,0.1,0,,,111,0,1,FALSE
+Results 3x5000,,,,,,,112,1,FALSE,FALSE
+Results 122x123,,,,,,,113,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < T+3P < 4R < 3R+S < 2R+2S < 4P < R+3S < 4S,1,0.3,0.1,0,,,114,0,1,FALSE
+Results 3x5000,,,,,,,115,1,FALSE,FALSE
+Results 122x123,,,,,,,116,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < T+3P < 4R < 3R+S < 4P < 2R+2S < R+3S < 4S,0.7,0.3,0.2,0,,,117,0,1,FALSE
+Results 3x5000,,,,,,,118,1,FALSE,FALSE
+Results 122x123,,,,,,,119,2,FALSE,FALSE
+4T < 3T+P < 2T+2P < T+3P < 4R < 4P < 3R+S < 2R+2S < R+3S < 4S,0.9,0.5,0.4,0,,,120,0,1,FALSE
+Results 3x5000,,,,,,,,,41,17
+Results 122x123,,,,,,,,,,

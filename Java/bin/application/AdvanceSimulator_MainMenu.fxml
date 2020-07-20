@@ -22,6 +22,7 @@
          <children>
             <Button layoutX="200.0" layoutY="320.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="100.0" text="Go Back" />
             <Button layoutX="200.0" layoutY="40.0" mnemonicParsing="false" onAction="#goFullSimulation" prefHeight="25.0" prefWidth="100.0" text="Full Simulation" />
+            <Button layoutX="200.0" layoutY="80.0" mnemonicParsing="false" onAction="#goGrowthSimulation" prefHeight="25.0" prefWidth="100.0" text="Growth Simulation" />
          </children>
       </Pane>
    </children>

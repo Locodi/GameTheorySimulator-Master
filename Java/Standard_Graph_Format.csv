@@ -1,6 +1,0 @@
-Interaction model and Update mechanism,1,1,,,,
-"Payoffs(T,R,P,S):",5,3,1,0,,
-Number of Nodes:,3,,,,,
-"Nodes details(cooperation, x position, y position, degree, for each neighbour: neighbour number/ID):",1,50,50,2,1,2
-,1,50,100,1,0,
-,0,100,100,1,0,

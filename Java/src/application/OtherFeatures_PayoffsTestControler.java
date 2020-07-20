@@ -21,15 +21,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/*
- * 
- * Goes over all payoff ratios from 1 to 10 with increment of 0.1
- * and for each one tries to find variables for a=a' and b (the number of minor nodes, it looks up to 20000) 
- * such that we can build the LocodiGraph
- * 
- * There is an option for S=0
- */
-
 public class OtherFeatures_PayoffsTestControler {
 
 	
