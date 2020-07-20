@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewGraphControler">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="500.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="500.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="500.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label layoutX="203.0" layoutY="50.0" text="Make New Graph" />
+            <Label fx:id="myLabel" layoutX="180.0" layoutY="100.0" textFill="#862020" />
+            <Button fx:id="btn_generateRandomNumber" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#makeNewGraph" prefWidth="50.0" text="OK" />
+            <TextField fx:id="newGraphName" layoutX="175.0" layoutY="160.0" promptText="Graph Name" />
+            <Button fx:id="btn_goBack" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+            <TextField fx:id="newGraph_Lattice_y" layoutX="175.0" layoutY="130.0" promptText="y" text="0" />
+            <TextField fx:id="newGraph_Lattice_x" layoutX="175.0" layoutY="100.0" promptText="x" text="0" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>

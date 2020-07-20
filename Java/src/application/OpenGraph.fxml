@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OpenGraphControler">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="500.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane prefHeight="500.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="btn_goBack" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+            <Button fx:id="btn_deleteGraph" layoutX="310.0" layoutY="325.0" mnemonicParsing="false" onAction="#deleteFile" text="Delete" />
+            <Button fx:id="btn_openGraph" layoutX="140.0" layoutY="325.0" mnemonicParsing="false" onAction="#openFile" text="Open" />
+            <TableView fx:id="tb_files" layoutX="75.0" layoutY="49.0" prefHeight="250.0" prefWidth="350.0">
+              <columns>
+                <TableColumn fx:id="cl_Name" prefWidth="160.0" text="Name" />
+                <TableColumn fx:id="cl_LastModified" prefWidth="186.0" text="Last Modified" />
+              </columns>
+            </TableView>
+            <Label layoutX="212.0" layoutY="16.0" text="Select a graph" />
+            <Label fx:id="lbl_errorMessage" layoutX="236.0" layoutY="308.0" textFill="#d32f2f" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>

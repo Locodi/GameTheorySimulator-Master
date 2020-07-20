@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenuControler">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="500.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="500.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="1.0" prefHeight="50.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="500.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+         <children>
+            <Button fx:id="btn_continu" disable="true" layoutX="194.0" layoutY="60.0" mnemonicParsing="false" onAction="#continu" prefHeight="25.0" prefWidth="100.0" text="Continu" />
+            <Button fx:id="btn_makeNewGraph" layoutX="194.0" layoutY="100.0" mnemonicParsing="false" onAction="#makeNewGraph" prefHeight="25.0" prefWidth="100.0" text="New" />
+            <Button fx:id="btn_openGraph" layoutX="194.0" layoutY="140.0" mnemonicParsing="false" onAction="#openGraph" prefHeight="25.0" prefWidth="100.0" text="Open" />
+            <Button fx:id="btn_exitApp" layoutX="194.0" layoutY="220.0" mnemonicParsing="false" onAction="#exitApp" prefHeight="25.0" prefWidth="100.0" text="Exit" />
+            <Button layoutX="194.0" layoutY="180.0" mnemonicParsing="false" onAction="#goOtherFeatures" prefHeight="25.0" prefWidth="100.0" text="Other Features" />
+         </children>
+      </Pane>
+   </children>
+</GridPane>
