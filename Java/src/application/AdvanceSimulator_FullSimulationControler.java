@@ -81,7 +81,7 @@ public class AdvanceSimulator_FullSimulationControler {
     public void initialize() throws IOException {
 		
 		// initialize input
-		numberOfRepeats=100; 
+		numberOfRepeats=800; 
 		numberOfMaxTurns=10000; 
 		stepSize=756;
 		rangeStart=0;
