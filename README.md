@@ -2,8 +2,9 @@
 
 Made by: Alexandru Martin Locodi<br />
 License: CC-BY<br />
-This is the simulator and the data used for paper 1.<br />
-To see the most up to date version of the simulator go here: https://github.com/Locodi/GameTheorySimulator-Master
+This is the most up to date version of the simulator.
+Version and Date for Paper 1 can be found: https://github.com/Locodi/GameTheorySimulator-Paper1
+Version and Date for Paper 2 can be found: https://github.com/Locodi/GameTheorySimulator-Paper2
 ## Table of Contents 
 
 - [Data](#data)
@@ -12,10 +13,7 @@ To see the most up to date version of the simulator go here: https://github.com/
 - [Bugs](#bugs)
 
 ## Data
-The data is found in the Data + analysis folder and it contains the following folders:
-- Full Simulation tests: in it "1 - Test results format.csv" explains the format of the test results and "test results comparison.xlsx" compares the results.
-- One permutation for all 6 node graphs: in it you can see the results of looking at any 1 permutation for all connected graphs of 6 nodes. 
-- Payoff ratios: in it you can see the ratios for which the Locodi Graph can exist.
+The data is found in the Data + analysis folder.
 ## Simulator Installation
 
 ### To get the project started:
@@ -51,7 +49,7 @@ The data is found in the Data + analysis folder and it contains the following fo
 
 ![Alt text](Images/MainMenu.PNG?raw=true "Main Menu")
 
-- In the New graph window we have 3 inputs, for the first 2 if the values are >=3 it will create a lattice graph (with k=4) of that size otherwise we will create an empty graph, the last input will set the name of the graph.
+- In the New graph window we have 5 inputs, for the first 2 if the values are >=3 it will create a lattice graph (with k=4) of that size otherwise we will create an empty graph,the next input sets the Interaction Model (1 - default), the next input sets the Update Mechanism (1 - default, 2 - normalized payoff) and the last input will set the name of the graph.
 
 ![Alt text](Images/New_Graph.PNG?raw=true "New Graph")
 
@@ -65,7 +63,8 @@ The data is found in the Data + analysis folder and it contains the following fo
       - the number of nodes
       - the payoffs which we can edit here
       - we can set a number of nodes to be random defectors
-      - and we can zoom in and out
+      - we can zoom in and out
+      - and we can see the Interaction Model and Update Mechanism
     - if a node is selected:
       - we will see the nodes id
       - we can set if it cooperates or defects
@@ -74,11 +73,12 @@ The data is found in the Data + analysis folder and it contains the following fo
     - we can see the graph
     - we can scroll to left-right and up-down if the graph is to large
     - we can click and drag a node to change its position
+    - We can click and drag in an empty space to start selecting multiple nodes
   - To the right we have 7 buttons:
-    - Add node will make it so the next click in an empty space will create a new node
-    - Add edge will make it so you can create an edge between the next 2 nodes you click
-    - Delete will make it so you delete the next node or edge you click
-    - Select & copy will make it so your next 2 clicks in an empty space will create a imaginary rectangle between them which will make a copy of all nodes and edges (fully contained in the rectangle) in the rectangle with the centre of the rectangle being created on your next click in an empty space
+    - Add node will make it so the next click in an empty space will create a new node, hold shift to repeat the process
+    - Add edge will make it so you can create an edge between the next 2 nodes you click. If multiple nodes are selected, before clicking the button, you will add an edge frome each selected node to the next node you click, hold shift to repeat the process
+    - Delete will make it so you delete the next node or edge you click, or it will delete all nodes currently selected and any edges to them, hold shift to repeat the process
+    - Select & copy will give you a ghost of currently selected nodes (and the edges between them) after taht whne you click an empty space it will place new nodes there acording to the ghost
     - Simulate will save the graph and send you to the Simulation screen
     - Adv. Simulate will save the graph and send you to the Simulation screen
     - Save & Exit will save the graph and send you to the Main Menu screen
@@ -86,11 +86,15 @@ The data is found in the Data + analysis folder and it contains the following fo
 ![Alt text](Images/Editor1.PNG?raw=true "Editor1")
 ![Alt text](Images/Editor2.PNG?raw=true "Editor2")
 
-- In the Simulate window we can run simple step by step simulations on our graph, at the bottom we have 4 buttons:
-  - Go back -> will send you back to the Editor window
-  - Restore -> will revert the nodes to the initial configuration
-  - Step -> will update the nodes to the next step
-  - Play/Pause -> will start/stop the automatic step with the speed of each step can be adjusted to the right when it is paused.
+- In the Simulate window we can run simple step by step simulations on our graph:
+  - On the right we have the additional options to:
+    - View a generated lattice graph as an image (up to some size and afected by zoom)
+    - Save the image generated (afected by zoom)
+  - at the bottom we have 4 buttons:
+    - Go back -> will send you back to the Editor window
+    - Restore -> will revert the nodes to the initial configuration
+    - Step -> will update the nodes to the next step
+    - Play/Pause -> will start/stop the automatic step with the speed of each step can be adjusted to the right when it is paused.
 
 ![Alt text](Images/Simulate.PNG?raw=true "Simulate")
 
@@ -106,14 +110,19 @@ The data is found in the Data + analysis folder and it contains the following fo
 
 - In the Other Features window we see a list of other simulations we can run, we have 3 buttons:
   - One Permutation -> will send you to the One Permutation window
+  - Lattice 4 Payoffs -> will send you to the Lattice 4 Payoffs window
   - Payoffs Test -> will send you to the Payoffs Test window
   - Go Back -> will send you back to the Main Menu window
 
 ![Alt text](Images/Other_Features.PNG?raw=true "Other Features")
 
-- In the One Permutation window we can look at all connected graphs of size Number of nodes and record what the result for all possible 1 defector permutation. If weighted graph is checked then the chance for the current node to see if it will copy a neighbour goes from 1 to 1/degree of current node. the results are stored in a .csv file.
+- In the One Permutation window we can look at all connected graphs of size Number of nodes and record what the result for all possible 1 defector permutation. If weighted graph is checked then the chance for the current node to see if it will copy a neighbour goes from 1 to 1/degree of current node. The results are stored in a .csv file.
 
 ![Alt text](Images/One_Permutation.PNG?raw=true "One Permutation")
+
+- In the Lattice 4 Payoffs it generates all possible payoff relations (+ examples) for the k=4 lattice graph acording to methods 1 and 2. The results are stored in a .csv file.
+
+![Alt text](Images/Lattice_4_Payoffs.PNG?raw=true "Lattice 4 Payoffs")
 
 - In the Payoffs Test window it goes over all payoff ratios from 1 to 10 with increment of 0.1 and for each one tries to find variables for a=a' and b (the number of minor nodes, it looks up to 20000) such that we can build the LocodiGraph, there is an option for S=0.
 
