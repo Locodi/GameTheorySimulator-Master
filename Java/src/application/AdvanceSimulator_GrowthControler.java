@@ -49,7 +49,7 @@ public class AdvanceSimulator_GrowthControler {
 	
 	private int numberOfRepeats, numberOfMaxTurns, stepSize, rangeStart, rangeEnd;
 	
-	private int interaction_model,update_mechanism;
+	private int interaction_model, update_mechanism;
 	
 
 	@FXML
@@ -221,12 +221,12 @@ public class AdvanceSimulator_GrowthControler {
 					    		// set defection
 					    		if(Integer.parseInt(split[0])==0)
 					    			{
-					    				nodes.get(i).setCurrentDefect(true);
+					    				nodes.get(i).setCurrentStrategy(0);
 					    				nodes.get(i).setFill(Color.rgb(200, 0, 0));
 					    			}
 					    		else
 					    			{
-					    				nodes.get(i).setCurrentDefect(false);
+					    				nodes.get(i).setCurrentStrategy(1);
 					    				nodes.get(i).setFill(Color.rgb(0, 200, 0));
 					    			}
 					    		
@@ -332,10 +332,22 @@ public class AdvanceSimulator_GrowthControler {
 			numberOfNodes++;
 			
 			
-			Vertex c = new Vertex ();
-			
-			// add the node to the list
-			nodes.add(c);		
+			if(interaction_model == 1 && update_mechanism == 1)
+			{
+				Vertex c = new Vertex_1_1();				
+				
+				// add the node to the list
+				nodes.add(c);
+			}
+			else if(interaction_model == 1 && update_mechanism == 2)
+			{				
+				Vertex c = new Vertex_1_2();
+				
+				// add the node to the list
+				nodes.add(c);
+			}
+			else
+				System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
 			
 		}
 			
@@ -1181,7 +1193,7 @@ public class AdvanceSimulator_GrowthControler {
 			for(int t = 0; t<maxNumberOfTurns;t++)
 			{
 				
-				// Calculate next defect for each node
+				// Calculate next strategy for each node
 				for(int i = 0; i<numberOfNodes; i++)
 				{
 					// set best score to current node score
@@ -1190,7 +1202,7 @@ public class AdvanceSimulator_GrowthControler {
 					int number_of_cooperators = 0;
 					int number_of_defectors = 0;
 					
-					if(nodes.get(i).getCurrentDefect() == false)
+					if(nodes.get(i).getCurrentStrategy() == 1)
 						number_of_cooperators++;
 					else
 						number_of_defectors++;
@@ -1203,7 +1215,7 @@ public class AdvanceSimulator_GrowthControler {
 						
 						if(current_neighbour.getCurrentPayoff()==best_score)
 						{
-							if(current_neighbour.getCurrentDefect() == false)
+							if(current_neighbour.getCurrentStrategy() == 1)
 								number_of_cooperators++;
 							else
 								number_of_defectors++;
@@ -1214,7 +1226,7 @@ public class AdvanceSimulator_GrowthControler {
 							number_of_cooperators = 0;
 							number_of_defectors = 0;
 							
-							if(current_neighbour.getCurrentDefect() == false)
+							if(current_neighbour.getCurrentStrategy() == 1)
 								number_of_cooperators++;
 							else
 								number_of_defectors++;
@@ -1225,31 +1237,31 @@ public class AdvanceSimulator_GrowthControler {
 					
 					if(number_of_cooperators==0)
 					{
-						nodes.get(i).setNextDefect(true);
+						nodes.get(i).setNextStrategy(0);
 					}
 					else if(number_of_defectors==0)
 					{
-						nodes.get(i).setNextDefect(false);
+						nodes.get(i).setNextStrategy(1);
 					}
 					else
 					{
 						double type = Math.random()*(number_of_cooperators + number_of_defectors);
 						if(type>number_of_defectors)
-							nodes.get(i).setNextDefect(false);
+							nodes.get(i).setNextStrategy(1);
 						else
-							nodes.get(i).setNextDefect(true);
+							nodes.get(i).setNextStrategy(0);
 					}
 					
 				}
-			// Update current defect
+			// Update current strategy
 			int temp_change =0;
 			for(int i = 0; i<numberOfNodes; i++)
 			{
 				
-				if(nodes.get(i).getCurrentDefect()!= nodes.get(i).getNextDefect())
+				if(nodes.get(i).getCurrentStrategy()!= nodes.get(i).getNextStrategy())
 					temp_change = 1;
 				
-				nodes.get(i).updateCurrentDefect();			
+				nodes.get(i).updateCurrentStrategy();			
 			}
 			
 			if(temp_change == 0)
@@ -1272,16 +1284,16 @@ public class AdvanceSimulator_GrowthControler {
 						for(int j = 0; j<neighbours.size(); j++)
 						{
 							Vertex current_neighbour = neighbours.get(j);
-							if(nodes.get(i).getCurrentDefect() == true )
+							if(nodes.get(i).getCurrentStrategy() == 0)
 							{
-								if(current_neighbour.getCurrentDefect() == true )
+								if(current_neighbour.getCurrentStrategy() == 0)
 									score = score + payoff_P;
 								else
 									score = score + payoff_T;
 							}
 							else
 							{
-								if(current_neighbour.getCurrentDefect() == true )
+								if(current_neighbour.getCurrentStrategy() == 0)
 									score = score + payoff_S;
 								else
 									score = score + payoff_R;
@@ -1308,7 +1320,7 @@ public class AdvanceSimulator_GrowthControler {
 					// initialize nodes to all cooperating
 					for(int i1 = 0; i1<numberOfNodes; i1++)
 					{
-						nodes.get(i1).setCurrentDefect(false);
+						nodes.get(i1).setCurrentStrategy(1);
 					}
 					
 					// set initial defectors
@@ -1321,11 +1333,11 @@ public class AdvanceSimulator_GrowthControler {
 						
 						for(int j1 = 0; j1<numberOfNodes; j1++)
 						{
-							if(nodes.get(j1).getCurrentDefect() == false)
+							if(nodes.get(j1).getCurrentStrategy() == 1)
 							{
 								if(counter == defectorNumber)
 								{
-									nodes.get(j1).setCurrentDefect(true);
+									nodes.get(j1).setCurrentStrategy(0);
 									break;
 								}
 								else
@@ -1342,16 +1354,16 @@ public class AdvanceSimulator_GrowthControler {
 						int score = 0;
 						for(int j1 = 0; j1<nodes.get(i1).getDegree(); j1++)
 						{								
-							if(nodes.get(i1).getCurrentDefect() == true )
+							if(nodes.get(i1).getCurrentStrategy() == 0)
 							{
-								if(nodes.get(i1).getNeighbor(j1).getCurrentDefect() == true )
+								if(nodes.get(i1).getNeighbor(j1).getCurrentStrategy() == 0)
 									score = score + payoff_P;
 								else
 									score = score + payoff_T;
 							}
 							else
 							{
-								if(nodes.get(i1).getNeighbor(j1).getCurrentDefect() == true )
+								if(nodes.get(i1).getNeighbor(j1).getCurrentStrategy() == 0)
 									score = score + payoff_S;
 								else
 									score = score + payoff_R;
@@ -1373,7 +1385,7 @@ public class AdvanceSimulator_GrowthControler {
 					// record results
 					for(int i1 = 0; i1<numberOfNodes; i1++)
 					{
-						if(nodes.get(i1).getCurrentDefect()==false)
+						if(nodes.get(i1).getCurrentStrategy()==1)
 						{
 							results[j][i]++;
 						}
@@ -1521,10 +1533,20 @@ public class AdvanceSimulator_GrowthControler {
 		
 		public void goBack(ActionEvent event)throws IOException
 		{	
-			// reset vertex count
-			Vertex c = new Vertex();
-			c.setCount(0);
-			
+			if(interaction_model == 1 && update_mechanism == 1)
+			{
+				// reset vertex count
+				Vertex c = new Vertex_1_1();
+				c.setCount(0);			
+			}
+			else if(interaction_model == 1 && update_mechanism == 2)
+			{
+				// reset vertex count
+				Vertex c = new Vertex_1_2();
+				c.setCount(0);
+			}
+			else
+				System.out.println("Undefined behaviour for current interaction_model and update_mechanism");			
 			// change window
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AdvanceSimulator_MainMenu.fxml"));
 			Parent temp_parent = (Parent)loader.load();

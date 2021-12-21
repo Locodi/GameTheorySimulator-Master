@@ -25,10 +25,17 @@ public class NewGraphControler {
 	
 	@FXML
 	private TextField newGraphName;
+	
 	@FXML
 	private TextField newGraph_Lattice_x;
 	@FXML
 	private TextField newGraph_Lattice_y;
+	
+	@FXML
+	private TextField newGraph_Interaction_Model;
+	
+	@FXML
+	private TextField newGraph_Update_Mechanism;
 	
 	public void makeNewGraph(ActionEvent event) throws IOException
 	{
@@ -88,7 +95,21 @@ public class NewGraphControler {
 			try{
 			    PrintWriter writer = new PrintWriter(new File("./Graphs/"+newGraphName.getText()+".csv"));
 			    // initialize document
-			    writer.println("1,1,"); // interaction_model & update_mechanism  TO DO: allow user to input this ones
+			    
+			    if(newGraph_Interaction_Model.getText().isEmpty() || newGraph_Update_Mechanism.getText().isEmpty())
+			    {
+			    	writer.println("1,1,"); // interaction_model & update_mechanism
+			    }
+			    else if(Integer.valueOf(newGraph_Interaction_Model.getText()) == 1 && Integer.valueOf(newGraph_Update_Mechanism.getText()) == 1)
+			    {
+			    	writer.println("1,1,"); // interaction_model & update_mechanism
+			    }
+			    else if(Integer.valueOf(newGraph_Interaction_Model.getText()) == 1 && Integer.valueOf(newGraph_Update_Mechanism.getText()) == 2)
+			    {
+			    	writer.println("1,2,"); // interaction_model & update_mechanism
+			    }	
+			    
+			  
 			    writer.println("5,3,1,0,"); // payoffs
 			   
 			    if(newGraph_Lattice_x.getText().isEmpty() || newGraph_Lattice_y.getText().isEmpty() || 

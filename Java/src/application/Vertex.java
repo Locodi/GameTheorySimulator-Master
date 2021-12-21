@@ -4,18 +4,15 @@ import java.util.ArrayList;
 
 import javafx.scene.shape.Circle;
 
-public class Vertex
+public abstract class Vertex
 {	
-	// false = Cooperate ; true = defect
-	private boolean current_defect;
-	private boolean next_defect;
+	 
+	private int current_strategy;
+	private int next_strategy;
 	
-	private int current_payoff;
-	private int next_payoff;
+	private double current_payoff;
+	private double next_payoff;
 	
-		
-	//used to assign the vertex number
-	private static int count = 0;
 	
 	private int vertexNumber;	
 	
@@ -37,70 +34,57 @@ public class Vertex
 	
 	Vertex()
 	{
-		this.mark=0;
 		
-		this.current_defect = false;
-		this.next_defect = false;
-		this.current_payoff = 0;
-		this.next_payoff = 0;
-		
-		this.vertexNumber = Vertex.count;
-		Vertex.count++;
-		
-		
-		visualObject=null;
-		this.neighbors = new ArrayList<Vertex> ();
-		this.edges = new ArrayList<Edge> ();
 
 	}
 	
-	Vertex(boolean defect)
+	Vertex(int strategy)
 	{
-		this.mark=0;
 		
-		this.current_defect = defect;
-		this.next_defect = false;
-		this.current_payoff = 0;
-		this.next_payoff = 0;
-		
-		this.vertexNumber = Vertex.count;
-		Vertex.count++;
-		
-		visualObject=null;
-		this.neighbors = new ArrayList<Vertex> ();
-		this.edges = new ArrayList<Edge> ();
 	}
 	
-	public void setNextPayoff(int payoff)
+	
+	
+	public void setCurrentPayoff(double payoff)
+	{
+		this.current_payoff = payoff;
+	}
+	
+	public double getCurrentPayoff()
+	{
+		return this.current_payoff;
+	}
+	
+	public void setNextPayoff(double payoff)
 	{
 		this.next_payoff = payoff;
 	}
 	
-	public int getCurrentPayoff()
+	public double getNextPayoff()
 	{
-		return this.current_payoff;
+		return this.next_payoff;
 	}
 		
-	public void setCurrentDefect(boolean defect)
+	public void setCurrentStrategy(int strategy)
 	{
-		this.current_defect = defect;
+		this.current_strategy = strategy;
 	}
 	
-	public boolean getCurrentDefect()
+	public int getCurrentStrategy()
 	{
-		return this.current_defect;
+		return this.current_strategy;
 	}	
 		
-	public void setNextDefect(boolean defect)
+	public void setNextStrategy(int strategy)
 	{
-		this.next_defect = defect;
+		this.next_strategy = strategy;
 	}
 	
-	public boolean getNextDefect()
+	public int getNextStrategy()
 	{
-		return this.next_defect;
-	}	
-			
+		return this.next_strategy;
+	}			
+	
 	public int getVertexNumber()
 	{
 		return this.vertexNumber;
@@ -111,15 +95,11 @@ public class Vertex
 		this.vertexNumber=v;
 	}
 	
-	public int getCount()
-	{
-		return Vertex.count;
-	}
+	public abstract int getCount();
 	
-	public void setCount(int c)
-	{
-		Vertex.count = c;
-	}
+	
+	public abstract void setCount(int c);
+	
 	
 	public void setMark(int newMark)
 	{
@@ -169,10 +149,20 @@ public class Vertex
 		this.neighbors.remove(neighbor);		
 	}
 	
+	public void setNeighbors(ArrayList<Vertex> a)
+	{
+		this.neighbors = a;
+	}
+	
 	public ArrayList<Vertex> getNeighbors()
 	{
 		return this.neighbors;
 	}	
+	
+	public void setEdges(ArrayList<Edge> a)
+	{
+		this.edges = a;
+	}
 	
 	public ArrayList<Edge> getEdges()
 	{
@@ -211,98 +201,17 @@ public class Vertex
 	}
 	
 
-	//update current defect to next defect
-	public void updateCurrentDefect()
+	//update current strategy to next strategy
+	public void updateCurrentStrategy()
 	{
-		this.current_defect = this.next_defect;
+		this.current_strategy = this.next_strategy;
 	}
 	
 	// calculates and sets the next payoff
-	public void calculateNextPayoff(int payoff_T, int payoff_R, int payoff_P, int payoff_S)
-	{
-		int score = 0;
-				
-		for(int j = 0; j<this.getNeighbors().size(); j++)
-		{
-			Vertex current_neighbour = this.getNeighbors().get(j);
-			if(this.getCurrentDefect() == true )
-			{
-				if(current_neighbour.getCurrentDefect() == true )
-					score = score + payoff_P;
-				else
-					score = score + payoff_T;
-			}
-			else
-			{
-				if(current_neighbour.getCurrentDefect() == true )
-					score = score + payoff_S;
-				else
-					score = score + payoff_R;
-			}
-			
-		}
-		
-		this.setNextPayoff(score);
-	}
+	public abstract void calculateNextPayoff(int[] payoffs);
 	
-	public void calculateNextDefect()
-	{
-		// set best score to current node score
-		int best_score = this.getCurrentPayoff();
-		
-		int number_of_cooperators = 0;
-		int number_of_defectors = 0;
-		
-		if(this.getCurrentDefect() == false)
-			number_of_cooperators++;
-		else
-			number_of_defectors++;
-		
-		
-		for(int j = 0; j<this.getNeighbors().size(); j++)
-		{
-			Vertex current_neighbour = this.getNeighbors().get(j);
-			
-			if(current_neighbour.getCurrentPayoff()==best_score)
-			{
-				if(current_neighbour.getCurrentDefect() == false)
-					number_of_cooperators++;
-				else
-					number_of_defectors++;
-			}
-			else if(current_neighbour.getCurrentPayoff()>best_score)
-			{
-				best_score = current_neighbour.getCurrentPayoff(); 
-				number_of_cooperators = 0;
-				number_of_defectors = 0;
-				
-				if(current_neighbour.getCurrentDefect() == false)
-					number_of_cooperators++;
-				else
-					number_of_defectors++;
-				
-			}
-			
-		}
-		
-		// if only defectors in the neighborhood have the best payoff
-		if(number_of_cooperators==0)
-		{
-			this.setNextDefect(true); // the current node will defect in the next turn
-		}
-		else if(number_of_defectors==0) // if only cooperators
-		{
-			this.setNextDefect(false); // it will cooperate
-		}
-		else
-		{	
-			//we randomly set the next defect proportional to the number of cooperators and defectors with the best payoff
-			double type = Math.random()*(number_of_cooperators + number_of_defectors);
-			if(type>number_of_defectors)
-				this.setNextDefect(false);
-			else
-				this.setNextDefect(true);
-		}
-	}
+	
+	public abstract void calculateNextStrategy();
+	
 			
 }

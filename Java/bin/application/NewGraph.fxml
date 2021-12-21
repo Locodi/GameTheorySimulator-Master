@@ -24,11 +24,13 @@
          <children>
             <Label layoutX="203.0" layoutY="50.0" text="Make New Graph" />
             <Label fx:id="myLabel" layoutX="180.0" layoutY="100.0" textFill="#862020" />
-            <Button fx:id="btn_generateRandomNumber" layoutX="225.0" layoutY="200.0" mnemonicParsing="false" onAction="#makeNewGraph" prefWidth="50.0" text="OK" />
-            <TextField fx:id="newGraphName" layoutX="175.0" layoutY="160.0" promptText="Graph Name" />
+            <Button fx:id="btn_generateRandomNumber" layoutX="225.0" layoutY="260.0" mnemonicParsing="false" onAction="#makeNewGraph" prefWidth="50.0" text="OK" />
+            <TextField fx:id="newGraphName" layoutX="175.0" layoutY="220.0" promptText="Graph Name" />
             <Button fx:id="btn_goBack" layoutX="22.0" layoutY="25.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-            <TextField fx:id="newGraph_Lattice_y" layoutX="175.0" layoutY="130.0" promptText="y" text="0" />
-            <TextField fx:id="newGraph_Lattice_x" layoutX="175.0" layoutY="100.0" promptText="x" text="0" />
+            <TextField fx:id="newGraph_Lattice_y" layoutX="175.0" layoutY="130.0" promptText="Lattice height" />
+            <TextField fx:id="newGraph_Lattice_x" layoutX="175.0" layoutY="100.0" promptText="Lattice width" />
+            <TextField fx:id="newGraph_Update_Mechanism" layoutX="175.0" layoutY="190.0" promptText="Update Mechanism (def 1)" />
+            <TextField fx:id="newGraph_Interaction_Model" layoutX="175.0" layoutY="160.0" promptText="Interaction Model (def 1)" />
          </children>
       </Pane>
    </children>

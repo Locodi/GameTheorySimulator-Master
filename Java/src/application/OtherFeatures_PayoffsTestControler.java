@@ -454,10 +454,6 @@ public class OtherFeatures_PayoffsTestControler {
 	
 	public void goBack(ActionEvent event)throws IOException
 	{	
-		// reset vertex count
-		Vertex c = new Vertex();
-		c.setCount(0);
-		
 		// change window
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("OtherFeatures_MainMenu.fxml"));
 		Parent temp_parent = (Parent)loader.load();

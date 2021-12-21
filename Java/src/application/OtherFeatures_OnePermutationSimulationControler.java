@@ -222,12 +222,12 @@ public class OtherFeatures_OnePermutationSimulationControler {
 				int[] seen = new int[numberOfNodes];
 				
 				// reset vertices count to 0
-				vertices[0]= new Vertex();
+				vertices[0]= new Vertex_1_1();
 				vertices[0].setCount(0);
 				
 				for(int i = 0; i<numberOfNodes; i++)
 				{				
-					vertices[i] = new Vertex();									
+					vertices[i] = new Vertex_1_1();									
 				}
 				
 				// reset vertices count to 0
@@ -283,10 +283,10 @@ public class OtherFeatures_OnePermutationSimulationControler {
 						{
 							if(i != initial_deffect_vertex)
 							{
-								vertices[i] = new Vertex();//initial cooperators
+								vertices[i] = new Vertex_1_1();//initial cooperators
 							}
 							else
-								vertices[i] = new Vertex(true); //initial defector					
+								vertices[i] = new Vertex_1_1(0); //initial defector					
 						}			
 						
 						// set vertices degree
@@ -309,7 +309,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 					
 						for(int i = 0; i<numberOfNodes; i++)
 						{
-							if(vertices[i].getCurrentDefect()== false)
+							if(vertices[i].getCurrentStrategy()== 1)
 								graph_robustness[initial_deffect_vertex][i] ++;
 									
 						}
@@ -394,16 +394,16 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			{
 				if(edges[i][j] == 1)
 				{
-					if(vertices[i].getCurrentDefect() == true )
+					if(vertices[i].getCurrentStrategy() == 0)
 					{
-						if(vertices[j].getCurrentDefect() == true )
+						if(vertices[j].getCurrentStrategy() == 0)
 							score = score + payoff_P;
 						else
 							score = score + payoff_T;
 					}
 					else
 					{
-						if(vertices[j].getCurrentDefect() == true )
+						if(vertices[j].getCurrentStrategy() == 0)
 							score = score + payoff_S;
 						else
 							score = score + payoff_R;
@@ -412,7 +412,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			}
 			
 			vertices[i].setNextPayoff(score);
-			vertices[i].setNextDefect(vertices[i].getCurrentDefect());
+			vertices[i].setNextStrategy(vertices[i].getCurrentStrategy());
 		}
 		
 		for(int tick_counter = 0; tick_counter<numberOfMaxTurns; tick_counter++ )
@@ -420,7 +420,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			for(int i = 0; i<numberOfNodes; i++)
 			{				
 				vertices[i].updateCurrentPayoff();
-				vertices[i].setCurrentDefect(vertices[i].getNextDefect());
+				vertices[i].setCurrentStrategy(vertices[i].getNextStrategy());
 			}
 			
 			// update next defect
@@ -429,7 +429,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			{
 				// strategy 1: set all to 0
 				/*
-				int top_score =0;
+				double top_score =0;
 				boolean top_defect = true;
 				boolean top_defect_set = false;
 				int top_defect_number = 0;
@@ -437,13 +437,13 @@ public class OtherFeatures_OnePermutationSimulationControler {
 				*/
 				
 				// strategy 2: set all to current vertex
-				int top_score =vertices[i].getCurrentPayoff();
-				boolean top_defect = vertices[i].getCurrentDefect();
-				boolean top_defect_set = true;				
+				double top_score = vertices[i].getCurrentPayoff();
+				int top_defect = vertices[i].getCurrentStrategy();
+				int top_defect_set = 0;				
 				int top_defect_number = 0;
 				int top_cooperate_number = 0;
 				
-				if(top_defect == true)
+				if(top_defect == 0)
 					top_defect_number++;
 				else
 					top_cooperate_number++;
@@ -464,7 +464,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 						if(vertices[j].getCurrentPayoff() == top_score)
 						{
 							// we have more than one top score
-							if(vertices[j].getCurrentDefect() == true)							
+							if(vertices[j].getCurrentStrategy() == 0)							
 								top_defect_number ++;						
 							else															
 								top_cooperate_number ++;							
@@ -472,7 +472,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 						else
 							if(vertices[j].getCurrentPayoff() > top_score)
 							{
-								if(vertices[j].getCurrentDefect() == true)
+								if(vertices[j].getCurrentStrategy() == 0)
 								{
 									top_defect_number = 1;
 									top_cooperate_number = 0;									
@@ -484,7 +484,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 								}
 								
 								top_score= vertices[j].getCurrentPayoff();
-								top_defect = vertices[j].getCurrentDefect();
+								top_defect = vertices[j].getCurrentStrategy();
 							}
 						}
 					}	
@@ -493,12 +493,12 @@ public class OtherFeatures_OnePermutationSimulationControler {
 				{
 					double type = Math.random()*(top_defect_number + top_cooperate_number);
 					if(type>top_defect_number)
-						vertices[i].setNextDefect(false);
+						vertices[i].setNextStrategy(1);
 					else
-						vertices[i].setNextDefect(true);
+						vertices[i].setNextStrategy(0);
 				}
 				else
-					vertices[i].setNextDefect(top_defect);
+					vertices[i].setNextStrategy(top_defect);
 			}
 			// generate next tick scores
 			
@@ -509,16 +509,16 @@ public class OtherFeatures_OnePermutationSimulationControler {
 				{
 					if(edges[i][j] == 1)
 					{
-						if(vertices[i].getNextDefect() == true )
+						if(vertices[i].getNextStrategy() == 0)
 						{
-							if(vertices[j].getNextDefect() == true )
+							if(vertices[j].getNextStrategy() == 0)
 								score = score + payoff_P;
 							else
 								score = score + payoff_T;
 						}
 						else
 						{
-							if(vertices[j].getNextDefect() == true )
+							if(vertices[j].getNextStrategy() == 0)
 								score = score + payoff_S;
 							else
 								score = score + payoff_R;
@@ -534,7 +534,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 			boolean graph_changed = false;
 			for(int i = 0; i<numberOfNodes; i++)
 			{
-				if(vertices[i].getCurrentDefect() != vertices[i].getNextDefect())
+				if(vertices[i].getCurrentStrategy() != vertices[i].getNextStrategy())
 				{
 					graph_changed = true;
 					break;							
@@ -586,7 +586,7 @@ public class OtherFeatures_OnePermutationSimulationControler {
 	public void goBack(ActionEvent event)throws IOException
 	{	
 		// reset vertex count
-		Vertex c = new Vertex();
+		Vertex c = new Vertex_1_1();
 		c.setCount(0);
 		
 		// change window

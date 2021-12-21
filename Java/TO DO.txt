@@ -9,7 +9,7 @@ MainMenuControler.java
 	- Implement other (add generate and test all 6 node graphs)
 	
 NewGraphControler.java
-		
+	- Update choice for picking IM and UM to be drop down.	
 OpenGraphControler.java
 	- Refresh table after deleting a graph + keep the sort order + auto select the nearest row
 
@@ -45,7 +45,7 @@ AdvanceSimulator_FullSimulationControler.java
 	- Tell the user when the simulation starts and ends (label)
 	- Show a graph of the results
 	- Save results in same .csv file as the graph (put it at the end)
-	- Check results: steps might be wrong( should end at n = number of nodes)
+	- Check results: steps might be wrong (should end at n = number of nodes)
 	- Update fxml file name.
 	
 OtherFeatures_OnePermutationSimulationControler.java

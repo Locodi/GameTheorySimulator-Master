@@ -80,27 +80,25 @@ public class AdvanceSimulator_FullSimulationControler {
 	@FXML
     public void initialize() throws IOException {
 		
-		// initialize input
-		numberOfRepeats=800; 
-		numberOfMaxTurns=10000; 
-		stepSize=756;
-		rangeStart=0;
-		
 		numberOfNodes=0;
+		
+		// open current graph
+				initObjects();
+		
+		// initialize input
+		numberOfRepeats=100;//1000 
+		numberOfMaxTurns=40000;//1000 
+		stepSize=2073;//1
+		rangeStart=0;//0
+		rangeEnd=numberOfNodes-1;//numberOfNodes-1
+		
 		
 		
 		txt_NumberOfRepeats.setText(Integer.toString(numberOfRepeats));
 		txt_NumberOfMaxTurns.setText(Integer.toString(numberOfMaxTurns));		
 		txt_StepSize.setText(Integer.toString(stepSize));
-		txt_RangeStart.setText(Integer.toString(rangeStart));
-				
-		
-		// open current graph
-		initObjects();
-		
-		rangeEnd=numberOfNodes-1;
-		txt_RangeEnd.setText(Integer.toString(rangeEnd+1));
-		
+		txt_RangeStart.setText(Integer.toString(rangeStart));		
+		txt_RangeEnd.setText(Integer.toString(rangeEnd+1));		
 		lbl_NumberOfNodes.setText(lbl_NumberOfNodes.getText() + Integer.toString(numberOfNodes));
 		
 	}
@@ -164,127 +162,49 @@ public class AdvanceSimulator_FullSimulationControler {
 			    	return 0;
 			    }
 			    
-			    // get payoffs
-			    if((line = br.readLine()) != null)
+			    if(interaction_model == 1 && update_mechanism == 1)
 			    {
-			    	
-			    	String split[] = line.split(","); 
-			    	
-			    	if(split.length==4 )
-			    	{
-				    	payoff_T=Integer.parseInt(split[0]);
-				    	payoff_R=Integer.parseInt(split[1]);
-				    	payoff_P=Integer.parseInt(split[2]);
-				    	payoff_S=Integer.parseInt(split[3]);
-			    	}
-			    	else
-			    	{
-			    		//throw bad file format error
-			    		System.out.println("Bad file format");
-			    		br.close();
-			    		fis.close();
-			    		return 0;
-			    	}
-			    }
-			    else
-			    {
-			    	// File empty, throw bad file format error
-			    	System.out.println("Bad file format");
-			    	br.close();
-			    	fis.close();
-			    	return 0;
-			    }
-			    
-			 // get number of nodes
-			    if((line = br.readLine()) != null)
-			    {
-			    	
-			    	String split[] = line.split(","); 
-			    	
-			    	if(split.length==1 )
-			    	{
-			    		temp_numberOfNodes=Integer.parseInt(split[0]);
-				    	
-			    	}
-			    	else
-			    	{
-			    		//throw bad file format error
-			    		System.out.println("Bad file format");
-			    		br.close();
-				    	fis.close();
-				    	return 0;
-			    	}
-			    }
-			    else
-			    {
-			    	//throw bad file format error
-			    	System.out.println("Bad file format");
-			    	br.close();
-			    	fis.close();
-			    	return 0;
-			    }
-			    
-			  //initialize nodes
-			    for(int i=0; i<temp_numberOfNodes; i++)
-			    {
-			    	placeNode(0, 0);
-			    }
-			    
-			    // set nodes details
-			    for(int i=0; i<temp_numberOfNodes; i++)
-			    {
-			    	// get node i
+			    	// get payoffs
 				    if((line = br.readLine()) != null)
 				    {
 				    	
 				    	String split[] = line.split(","); 
 				    	
-				    	if(split.length>3 )
+				    	if(split.length==4 )
 				    	{
-				    		
-				    		// Set node position
-				    		nodes.get(i).setCenterX(Double.parseDouble(split[1]));
-				    		nodes.get(i).setCenterY(Double.parseDouble(split[2]));		    		
-				    		
-				    		
-				    		// set defection
-				    		if(Integer.parseInt(split[0])==0)
-				    			{
-				    				nodes.get(i).setCurrentDefect(true);				    				
-				    			}
-				    		else
-				    			{
-				    				nodes.get(i).setCurrentDefect(false);				    				
-				    			}
-				    		
-				    		int degree = Integer.parseInt(split[3]);
-				    		
-				    		//set up adjacency
-				    		if(split.length==4 + degree)
-				    		{
-				    			for(int t=0; t<degree; t++)
-							    {
-				    				//get neighbor
-				    				int neighbor = Integer.parseInt(split[4 + t]);	
-				    				
-				    				// see if neighbor has current node as a neighbor so we can get the edge
-				    				if(neighbor>i)			    					
-			    					{
-			    						// make it
-				    					placeEdge(nodes.get(i) , nodes.get(neighbor)); 
-			    					}  
-							    }
-				    			
-				    		}
-				    		else
-					    	{
-					    		//throw bad file format error
-					    		System.out.println("Bad file format");
-					    		br.close();
-						    	fis.close();
-						    	return 0;
-					    	}
-				    		
+					    	payoff_T=Integer.parseInt(split[0]);
+					    	payoff_R=Integer.parseInt(split[1]);
+					    	payoff_P=Integer.parseInt(split[2]);
+					    	payoff_S=Integer.parseInt(split[3]);
+				    	}
+				    	else
+				    	{
+				    		//throw bad file format error
+				    		System.out.println("Bad file format");
+				    		br.close();
+				    		fis.close();
+				    		return 0;
+				    	}
+				    }
+				    else
+				    {
+				    	// File empty, throw bad file format error
+				    	System.out.println("Bad file format");
+				    	br.close();
+				    	fis.close();
+				    	return 0;
+				    }
+				    
+				    // get number of nodes
+				    if((line = br.readLine()) != null)
+				    {
+				    	
+				    	String split[] = line.split(","); 
+				    	
+				    	if(split.length==1 )
+				    	{
+				    		temp_numberOfNodes=Integer.parseInt(split[0]);
+					    	
 				    	}
 				    	else
 				    	{
@@ -303,38 +223,282 @@ public class AdvanceSimulator_FullSimulationControler {
 				    	fis.close();
 				    	return 0;
 				    }
-			    }		
-			    
-			    // readjust edge positions
-			    for(int i=0; i<temp_numberOfNodes; i++)
-			    {
-			    	ArrayList<Edge> edges = nodes.get(i).getEdges();
-			    	for(int j=0; j<edges.size(); j++)
+				    
+				    //initialize nodes
+				    for(int i=0; i<temp_numberOfNodes; i++)
 				    {
-			    		if(edges.get(j).getNodeA() == nodes.get(i))
-			    		{			    			
-			    			edges.get(j).setStartX(nodes.get(i).getCenterX());
-			    			edges.get(j).setStartY(nodes.get(i).getCenterY());							
-			    		}
-			    		else
-			    		{
-			    			edges.get(j).setEndX(nodes.get(i).getCenterX());
-			    			edges.get(j).setEndY(nodes.get(i).getCenterY());
-			    		}
+				    	placeNode(0, 0);
 				    }
-			    	
+				    
+				    // set nodes details
+				    for(int i=0; i<temp_numberOfNodes; i++)
+				    {
+				    	// get node i
+					    if((line = br.readLine()) != null)
+					    {
+					    	
+					    	String split[] = line.split(","); 
+					    	
+					    	if(split.length>3 )
+					    	{
+					    		
+					    		// Set node position
+					    		nodes.get(i).setCenterX(Double.parseDouble(split[1]));
+					    		nodes.get(i).setCenterY(Double.parseDouble(split[2]));		    		
+					    		
+					    		
+					    		// set defection
+					    		if(Integer.parseInt(split[0])==0)
+					    			{
+					    				nodes.get(i).setCurrentStrategy(0);				    				
+					    			}
+					    		else
+					    			{
+					    				nodes.get(i).setCurrentStrategy(1);				    				
+					    			}
+					    		
+					    		int degree = Integer.parseInt(split[3]);
+					    		
+					    		//set up adjacency
+					    		if(split.length==4 + degree)
+					    		{
+					    			for(int t=0; t<degree; t++)
+								    {
+					    				//get neighbor
+					    				int neighbor = Integer.parseInt(split[4 + t]);	
+					    				
+					    				// see if neighbor has current node as a neighbor so we can get the edge
+					    				if(neighbor>i)			    					
+				    					{
+				    						// make it
+					    					placeEdge(nodes.get(i) , nodes.get(neighbor)); 
+				    					}  
+								    }
+					    			
+					    		}
+					    		else
+						    	{
+						    		//throw bad file format error
+						    		System.out.println("Bad file format");
+						    		br.close();
+							    	fis.close();
+							    	return 0;
+						    	}
+					    		
+					    	}
+					    	else
+					    	{
+					    		//throw bad file format error
+					    		System.out.println("Bad file format");
+					    		br.close();
+						    	fis.close();
+						    	return 0;
+					    	}
+					    }
+					    else
+					    {
+					    	//throw bad file format error
+					    	System.out.println("Bad file format");
+					    	br.close();
+					    	fis.close();
+					    	return 0;
+					    }
+				    }		
+				    
+				    // readjust edge positions
+				    for(int i=0; i<temp_numberOfNodes; i++)
+				    {
+				    	ArrayList<Edge> edges = nodes.get(i).getEdges();
+				    	for(int j=0; j<edges.size(); j++)
+					    {
+				    		if(edges.get(j).getNodeA() == nodes.get(i))
+				    		{			    			
+				    			edges.get(j).setStartX(nodes.get(i).getCenterX());
+				    			edges.get(j).setStartY(nodes.get(i).getCenterY());							
+				    		}
+				    		else
+				    		{
+				    			edges.get(j).setEndX(nodes.get(i).getCenterX());
+				    			edges.get(j).setEndY(nodes.get(i).getCenterY());
+				    		}
+					    }
+				    	
+				    }
 			    }
+			    else if(interaction_model == 1 && update_mechanism == 2)
+			    {
+
+			    	// get payoffs
+				    if((line = br.readLine()) != null)
+				    {
+				    	
+				    	String split[] = line.split(","); 
+				    	
+				    	if(split.length==4 )
+				    	{
+					    	payoff_T=Integer.parseInt(split[0]);
+					    	payoff_R=Integer.parseInt(split[1]);
+					    	payoff_P=Integer.parseInt(split[2]);
+					    	payoff_S=Integer.parseInt(split[3]);
+				    	}
+				    	else
+				    	{
+				    		//throw bad file format error
+				    		System.out.println("Bad file format");
+				    		br.close();
+				    		fis.close();
+				    		return 0;
+				    	}
+				    }
+				    else
+				    {
+				    	// File empty, throw bad file format error
+				    	System.out.println("Bad file format");
+				    	br.close();
+				    	fis.close();
+				    	return 0;
+				    }
+				    
+				    // get number of nodes
+				    if((line = br.readLine()) != null)
+				    {
+				    	
+				    	String split[] = line.split(","); 
+				    	
+				    	if(split.length==1 )
+				    	{
+				    		temp_numberOfNodes=Integer.parseInt(split[0]);
+					    	
+				    	}
+				    	else
+				    	{
+				    		//throw bad file format error
+				    		System.out.println("Bad file format");
+				    		br.close();
+					    	fis.close();
+					    	return 0;
+				    	}
+				    }
+				    else
+				    {
+				    	//throw bad file format error
+				    	System.out.println("Bad file format");
+				    	br.close();
+				    	fis.close();
+				    	return 0;
+				    }
+				    
+				    //initialize nodes
+				    for(int i=0; i<temp_numberOfNodes; i++)
+				    {
+				    	placeNode(0, 0);
+				    }
+				    
+				    // set nodes details
+				    for(int i=0; i<temp_numberOfNodes; i++)
+				    {
+				    	// get node i
+					    if((line = br.readLine()) != null)
+					    {
+					    	
+					    	String split[] = line.split(","); 
+					    	
+					    	if(split.length>3 )
+					    	{
+					    		
+					    		// Set node position
+					    		nodes.get(i).setCenterX(Double.parseDouble(split[1]));
+					    		nodes.get(i).setCenterY(Double.parseDouble(split[2]));		    		
+					    		
+					    		
+					    		// set defection
+					    		if(Integer.parseInt(split[0])==0)
+					    			{
+					    				nodes.get(i).setCurrentStrategy(0);				    				
+					    			}
+					    		else
+					    			{
+					    				nodes.get(i).setCurrentStrategy(1);				    				
+					    			}
+					    		
+					    		int degree = Integer.parseInt(split[3]);
+					    		
+					    		//set up adjacency
+					    		if(split.length==4 + degree)
+					    		{
+					    			for(int t=0; t<degree; t++)
+								    {
+					    				//get neighbor
+					    				int neighbor = Integer.parseInt(split[4 + t]);	
+					    				
+					    				// see if neighbor has current node as a neighbor so we can get the edge
+					    				if(neighbor>i)			    					
+				    					{
+				    						// make it
+					    					placeEdge(nodes.get(i) , nodes.get(neighbor)); 
+				    					}  
+								    }
+					    			
+					    		}
+					    		else
+						    	{
+						    		//throw bad file format error
+						    		System.out.println("Bad file format");
+						    		br.close();
+							    	fis.close();
+							    	return 0;
+						    	}
+					    		
+					    	}
+					    	else
+					    	{
+					    		//throw bad file format error
+					    		System.out.println("Bad file format");
+					    		br.close();
+						    	fis.close();
+						    	return 0;
+					    	}
+					    }
+					    else
+					    {
+					    	//throw bad file format error
+					    	System.out.println("Bad file format");
+					    	br.close();
+					    	fis.close();
+					    	return 0;
+					    }
+				    }		
+				    
+				    // readjust edge positions
+				    for(int i=0; i<temp_numberOfNodes; i++)
+				    {
+				    	ArrayList<Edge> edges = nodes.get(i).getEdges();
+				    	for(int j=0; j<edges.size(); j++)
+					    {
+				    		if(edges.get(j).getNodeA() == nodes.get(i))
+				    		{			    			
+				    			edges.get(j).setStartX(nodes.get(i).getCenterX());
+				    			edges.get(j).setStartY(nodes.get(i).getCenterY());							
+				    		}
+				    		else
+				    		{
+				    			edges.get(j).setEndX(nodes.get(i).getCenterX());
+				    			edges.get(j).setEndY(nodes.get(i).getCenterY());
+				    		}
+					    }
+				    	
+				    }
+			    
+			    }
+			    else
+					System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
+			    
+			    
 			    
 			    
 			    br.close();
 			    fis.close();
 				
-				// get data
-				
-				
-				
-				
-				// edges
 				}
 				catch (FileNotFoundException ex) {
 					System.out.println("File not found!");	
@@ -353,15 +517,25 @@ public class AdvanceSimulator_FullSimulationControler {
 	}
 	
 	public void placeNode(double ev_x, double ev_y)
-	{
+	{		
+		numberOfNodes++;		
 		
-		numberOfNodes++;
-		
-		
-		Vertex c = new Vertex ();
-		
-		// add the node to the list
-		nodes.add(c);		
+		if(interaction_model == 1 && update_mechanism == 1)
+		{
+			Vertex c = new Vertex_1_1();				
+			
+			// add the node to the list
+			nodes.add(c);
+		}
+		else if(interaction_model == 1 && update_mechanism == 2)
+		{
+			Vertex c = new Vertex_1_2();				
+			
+			// add the node to the list
+			nodes.add(c);
+		}
+		else
+			System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
 		
 	}
 		
@@ -584,7 +758,7 @@ public class AdvanceSimulator_FullSimulationControler {
 						// initialize nodes to all cooperating
 						for(int i1 = 0; i1<numberOfNodes; i1++)
 						{
-							nodes.get(i1).setCurrentDefect(false);
+							nodes.get(i1).setCurrentStrategy(1);
 						}
 						
 						// set initial defectors
@@ -597,11 +771,11 @@ public class AdvanceSimulator_FullSimulationControler {
 							
 							for(int j1 = 0; j1<numberOfNodes; j1++)
 							{
-								if(nodes.get(j1).getCurrentDefect() == false)
+								if(nodes.get(j1).getCurrentStrategy() == 1)
 								{
 									if(counter == defectorNumber)
 									{
-										nodes.get(j1).setCurrentDefect(true);
+										nodes.get(j1).setCurrentStrategy(0);
 										break;
 									}
 									else
@@ -611,13 +785,32 @@ public class AdvanceSimulator_FullSimulationControler {
 							}
 						}
 						
-						// Calculate current Payoff for each node
-						
-						for(int i1 = 0; i1<numberOfNodes; i1++)
-						{							
-							nodes.get(i1).calculateNextPayoff(payoff_T, payoff_R, payoff_P, payoff_S);
-							nodes.get(i1).updateCurrentPayoff();							
+												
+						if(interaction_model == 1 && update_mechanism == 1)
+						{
+							int[] payoffs = {payoff_T, payoff_R, payoff_P, payoff_S};
+							
+							// Calculate current Payoff for each node				
+							for(int i1 = 0; i1<numberOfNodes; i1++)
+							{							
+								nodes.get(i1).calculateNextPayoff(payoffs);
+								nodes.get(i1).updateCurrentPayoff();							
+							}			
 						}
+						else if(interaction_model == 1 && update_mechanism == 2)
+						{
+							int[] payoffs = {payoff_T, payoff_R, payoff_P, payoff_S};
+							
+							// Calculate current Payoff for each node				
+							for(int i1 = 0; i1<numberOfNodes; i1++)
+							{							
+								nodes.get(i1).calculateNextPayoff(payoffs);
+								nodes.get(i1).updateCurrentPayoff();							
+							}
+						}
+						else
+							System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
+												
 						
 						
 						// play game						
@@ -625,11 +818,13 @@ public class AdvanceSimulator_FullSimulationControler {
 						
 						if(game_result == 0)
 							System.out.println("Reached max turns");
+						else if(game_result == 2)
+							System.out.println("no big change over long time");
 						
 						// record results
 						for(int i1 = 0; i1<numberOfNodes; i1++)
 						{
-							if(nodes.get(i1).getCurrentDefect()==false)
+							if(nodes.get(i1).getCurrentStrategy()==1)
 							{
 								results[j][i]++;
 							}
@@ -672,7 +867,7 @@ public class AdvanceSimulator_FullSimulationControler {
 			// Calculate next defect for each node
 			for(int i = 0; i<numberOfNodes; i++)
 			{
-				nodes.get(i).calculateNextDefect();
+				nodes.get(i).calculateNextStrategy();
 			}
 			
 			// Update current defect
@@ -680,10 +875,10 @@ public class AdvanceSimulator_FullSimulationControler {
 			for(int i = 0; i<numberOfNodes; i++)
 			{
 				
-				if(nodes.get(i).getCurrentDefect()!= nodes.get(i).getNextDefect())
+				if(nodes.get(i).getCurrentStrategy()!= nodes.get(i).getNextStrategy())
 					temp_change = 1;
 				
-				nodes.get(i).updateCurrentDefect();			
+				nodes.get(i).updateCurrentStrategy();			
 			}
 			
 			if(temp_change == 0)
@@ -692,23 +887,42 @@ public class AdvanceSimulator_FullSimulationControler {
 				changeCounter = 0;
 			
 			if(changeCounter == maxNoChange)
-			{
+			{				
 				return 1; // No more change in the graph
 			}
 			
-			// Calculate next Payoffs and update current Payoffs
-			for(int i = 0; i<numberOfNodes; i++)
-			{				
-				nodes.get(i).calculateNextPayoff(payoff_T, payoff_R, payoff_P, payoff_S);
-				nodes.get(i).updateCurrentPayoff();				
+			if(interaction_model == 1 && update_mechanism == 1)
+			{
+				int[] payoffs = {payoff_T, payoff_R, payoff_P, payoff_S};
+				
+				// Calculate current Payoff for each node				
+				for(int i = 0; i<numberOfNodes; i++)
+				{							
+					nodes.get(i).calculateNextPayoff(payoffs);
+					nodes.get(i).updateCurrentPayoff();							
+				}			
 			}
+			else if(interaction_model == 1 && update_mechanism == 2)
+			{
+				int[] payoffs = {payoff_T, payoff_R, payoff_P, payoff_S};
+				
+				// Calculate current Payoff for each node				
+				for(int i = 0; i<numberOfNodes; i++)
+				{							
+					nodes.get(i).calculateNextPayoff(payoffs);
+					nodes.get(i).updateCurrentPayoff();							
+				}
+			}
+			else
+				System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
+			
 			
 			if(t%100==0)
 			{
 				int currentNumberOfCooperators=0;
 				for(int i = 0; i<numberOfNodes; i++)
 				{						
-					if(nodes.get(i).getCurrentDefect()!= true)
+					if(nodes.get(i).getCurrentStrategy()!= 0)
 						currentNumberOfCooperators ++;
 				}
 				if(t<=100)
@@ -797,9 +1011,20 @@ public class AdvanceSimulator_FullSimulationControler {
 	
 	public void goBack(ActionEvent event)throws IOException
 	{	
-		// reset vertex count
-		Vertex c = new Vertex();
-		c.setCount(0);
+		if(interaction_model == 1 && update_mechanism == 1)
+		{
+			// reset vertex count
+			Vertex c = new Vertex_1_1();
+			c.setCount(0);			
+		}
+		else if(interaction_model == 1 && update_mechanism == 2)
+		{
+			// reset vertex count
+			Vertex c = new Vertex_1_2();
+			c.setCount(0);
+		}
+		else
+			System.out.println("Undefined behaviour for current interaction_model and update_mechanism");
 		
 		// change window
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("AdvanceSimulator_MainMenu.fxml"));

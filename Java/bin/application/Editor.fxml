@@ -33,6 +33,8 @@
                   <Label fx:id="lbl_GraphSelection_SetNumberOfDefectorsError" alignment="CENTER" layoutX="10.0" layoutY="453.0" prefWidth="80.0" textAlignment="CENTER" wrapText="true" />
                   <Label layoutX="11.0" layoutY="453.0" prefHeight="34.0" prefWidth="80.0" text="Set zoom" textAlignment="CENTER" wrapText="true" />
                   <ChoiceBox fx:id="choiceBox_GraphSelection_SetZoom" layoutX="18.0" layoutY="487.0" prefHeight="25.0" prefWidth="66.0" />
+                  <Label fx:id="lbl_GraphSelection_InteractionModel" alignment="CENTER" layoutX="10.0" layoutY="520.0" prefWidth="80.0" />
+                  <Label fx:id="lbl_GraphSelection_UpdateMechanism" alignment="CENTER" layoutX="10.0" layoutY="550.0" prefWidth="80.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="pane_Selection_Node" minHeight="600.0" minWidth="10.0" prefHeight="600.0" prefWidth="100.0" visible="false">
@@ -49,7 +51,7 @@
       </AnchorPane>
       <ScrollPane fx:id="scrlpane_MainDisplay" hbarPolicy="ALWAYS" minHeight="500.0" minWidth="50.0" prefHeight="600.0" prefWidth="350.0" vbarPolicy="ALWAYS">
         <content>
-          <AnchorPane fx:id="pane_MainDisplay" minHeight="600.0" minWidth="50.0" onMouseClicked="#mainDisplayClick" prefHeight="700.0" prefWidth="500.0" />
+          <AnchorPane fx:id="pane_MainDisplay" minHeight="600.0" minWidth="50.0" onDragDetected="#mainDisplayDragStart" onMouseClicked="#mainDisplayClick" prefHeight="700.0" prefWidth="500.0" />
         </content>
       </ScrollPane>
     <AnchorPane maxWidth="100.0" minHeight="600.0" minWidth="10.0" prefHeight="600.0" prefWidth="100.0" SplitPane.resizableWithParent="false">

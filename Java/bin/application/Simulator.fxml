@@ -28,8 +28,12 @@
                         <Label layoutX="10.0" layoutY="240.0" text="-P:" />
                         <TextField fx:id="txt_GraphSelection_SValue" editable="false" layoutX="25.0" layoutY="276.0" prefWidth="50.0" />
                         <Label layoutX="10.0" layoutY="280.0" text="-S:" />
+                        <Label fx:id="lbl_GraphSelection_InteractionModel" alignment="CENTER" layoutX="10.0" layoutY="310.0" prefWidth="80.0" />
+                        <Label fx:id="lbl_GraphSelection_UpdateMechanism" alignment="CENTER" layoutX="10.0" layoutY="340.0" prefWidth="80.0" />
                         <Label layoutX="10.0" layoutY="440.0" prefHeight="34.0" prefWidth="80.0" text="Set zoom" textAlignment="CENTER" wrapText="true" />
                         <ChoiceBox fx:id="choiceBox_GraphSelection_SetZoom" layoutX="17.0" layoutY="474.0" prefHeight="25.0" prefWidth="66.0" />
+                        <CheckBox fx:id="cbox_ImageView" layoutX="9.0" layoutY="388.0" mnemonicParsing="false" text="Image View" />
+                        <Button fx:id="btn_SaveImage" disable="true" layoutX="12.0" layoutY="415.0" mnemonicParsing="false" onAction="#saveImage" text="Save Image" />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="pane_Selection_Node" minHeight="600.0" minWidth="10.0" prefHeight="600.0" prefWidth="100.0" visible="false">
