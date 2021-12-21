@@ -3,8 +3,8 @@
 Made by: Alexandru Martin Locodi<br />
 License: CC-BY<br />
 This is the most up to date version of the simulator.
-Version and Date for Paper 1 can be found: https://github.com/Locodi/GameTheorySimulator-Paper1
-Version and Date for Paper 2 can be found: https://github.com/Locodi/GameTheorySimulator-Paper2
+Version and Date for Paper 1 can be found: https://github.com/Locodi/GameTheorySimulator-Paper1 <br />
+Version and Date for Paper 2 can be found: https://github.com/Locodi/GameTheorySimulator-Paper2 <br />
 ## Table of Contents 
 
 - [Data](#data)
